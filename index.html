@@ -1,122 +1,89 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Form Validation System</title>
-    <script src="jquery.js"></script>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 130%;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reservation Calendar</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
 
-        .wrapper {
-            width: 550px;
-            margin: 0 auto;
-        }
+    header {
+      width: 100%;
+      background-color: #007BFF;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        label {
-            width: 200px;
-            float: left;
-            position: relative;
-            top: 12px;
-        }
+    #calendar {
+      margin-top: 3rem;
+      width: 90%;
+      max-width: 600px;
+      height: 400px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #555;
+    }
 
-        input {
-            width: 320px;
-            font-size: 25px;
-            border: 1px solid black;
-            border-radius: 5px;
-            padding: 5px 5px 12px 5px;
-        }
+    #continueBtn {
+      margin-top: 2rem;
+      padding: 0.75rem 2rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-        .formelement {
-            margin-bottom: 10px;
-
-        }
-
-        #submitbutton {
-            width: 130px;
-            margin-left: 200px;
-
-        }
-
-        #errors{
-            color: red;
-            font-size: 90%;
-        }
-        #success{
-            color: green;
-            font-size: 90%;
-        }
-    </style>
+    #continueBtn:hover {
+      background-color: #218838;
+    }
+  </style>
 </head>
-
 <body>
-    <div id="errors"></div>
-    <div id="success"></div>
-    <div class="wrapper">
-        <div class="formelement">
-            <label for="Email">Email</label>
-            <input type="text" id="Email" name="Email">
-        </div>
-        <div class="formelement">
-            <label for="phoneno">Phone-Number</label>
-            <input type="text" id="phoneno" name="phoneno">
-        </div>
-        <div class="formelement">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password">
-        </div>
-        <div class="formelement">
-            <label for="confirmpassword">Confirm-Password</label>
-            <input type="password" id="confirmpassword" name="confirmpassword">
-        </div>
-        <input type="submit" id="submitbutton">
-    </div>
 
+  <header>
+    Reservation Date
+  </header>
 
+  <div id="calendar">
+    📅 Calendar will appear here
+  </div>
 
-    <script>
-        var errormessage = "";
-        var missingfield = "";
-        function isEmail(email) {
-            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-            return regex.test(email);
-        }
-        $("#submitbutton").click(function () {
-            if ($("#Email").val() == "") {
-                missingfield += "<p>Email not filled<p>";
-            }
-            if ($("#phoneno").val() == "") {
-                missingfield += "<p>Phone number not filled<p>";
-            }
-            if ($("#password").val() == "") {
-                missingfield += "<p>Password not filled<p>";
-            }
+  <button id="continueBtn">Continue</button>
 
-            if (isEmail($("#Email").val()) == false) {
-                errormessage += "<p>Email id is not valid<p>";
-            }
-            if ($.isNumeric($("#phoneno").val()) == false) {
-                errormessage += "<p>Phone number is not valid<p>";
-            }
-            if ($("#password").val() != $("#confirmpassword").val()) {
-                errormessage += "<p>Password does not match<p>";
-            }
-            if(errormessage == ""){
-                $("#success").html("You are registered")
-            }else{
-                $("#errors").html(errormessage+missingfield);
-            }
-        });
-       
-    </script>
+  <!-- Local jQuery minified -->
+  <script src="js/jquery-3.7.1.min.js"></script>
 
-
-
-
-
+  <!-- Custom script (optional) -->
+  <script>
+    $(document).ready(function () {
+      $('#continueBtn').click(function () {
+        alert('Continue button clicked!');
+      });
+    });
+  </script>
 
 </body>
-
 </html>
